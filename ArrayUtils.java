@@ -148,7 +148,7 @@ public class ArrayUtils {
     }
 
     static int[] binaryMergeSort(int[] array) {
-        if (array.length <=1)
+        if (array.length <= 1)
             return array;
 
         int half = array.length / 2;
@@ -156,6 +156,29 @@ public class ArrayUtils {
         int[] right = binaryMergeSort(Arrays.copyOfRange(array, half, array.length));
 
         return mergeSort(left, right);
+
+    }
+
+    static boolean binarySearch(int[] array, int value) {
+        assert (array.length >= 1);
+
+        if (array.length == 1) {
+            return array[0] == value;
+        }
+
+        int half = array.length / 2;
+
+        if (array[half] == value)
+            return true;
+
+        int[] left = Arrays.copyOfRange(array, 0, half);
+        int[] right = Arrays.copyOfRange(array, half, array.length);
+
+       
+        return binarySearch(left, value) || binarySearch(right, value);
+        
+
+        
 
     }
 
