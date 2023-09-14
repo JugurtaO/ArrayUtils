@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * ArrayUtils
  */
@@ -108,5 +110,36 @@ public class ArrayUtils {
         }
 
     }
+
+
+    static int[] mergeSort(int[] left ,int[] right){
+
+        assert (left.length>0 && right.length>0);
+        
+        int [] sortedArray=new int[left.length+right.length];
+
+       
+
+
+        return sortedArray;
+    }
+
+
+    static int[] binaryMergeSort(int[] array){
+        if(array.length==0 || array.length<1 )
+            return array;
+
+
+        int half=array.length/2;
+        int[] left= binaryMergeSort(Arrays.copyOfRange(array, 0, half))  ;
+        int[] right=binaryMergeSort(Arrays.copyOfRange(array, half, array.length));
+
+
+        return mergeSort(left,right);
+
+    }
+
+
+    
 
 }
