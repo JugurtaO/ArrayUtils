@@ -91,55 +91,72 @@ public class ArrayUtils {
         int minValueIndex;
         int swap;
 
-        for (int i = 0; i < array.length-1; i++) {
-            minValue=array[i];
-            minValueIndex=i;
-            for (int j = i+1; j < array.length; j++) {
+        for (int i = 0; i < array.length - 1; i++) {
+            minValue = array[i];
+            minValueIndex = i;
+            for (int j = i + 1; j < array.length; j++) {
                 if (array[j] < minValue) {
                     minValueIndex = j;
-                    minValue=array[j];
+                    minValue = array[j];
 
                 }
 
-
             }
 
-            swap=array[i];
-            array[i]=minValue;
-            array[minValueIndex]=swap;
+            swap = array[i];
+            array[i] = minValue;
+            array[minValueIndex] = swap;
         }
 
     }
 
+    static int[] mergeSort(int[] left, int[] right) {
 
-    static int[] mergeSort(int[] left ,int[] right){
+        assert (left.length > 0 && right.length > 0);
 
-        assert (left.length>0 && right.length>0);
-        
-        int [] sortedArray=new int[left.length+right.length];
+        int[] sortedArray = new int[left.length + right.length];
 
-       
+        int leftCounter = 0;
+        int rightCounter = 0;
+        int mainIndex = 0;
 
+        while (leftCounter < left.length && rightCounter < right.length) {
+            if (left[leftCounter] < right[rightCounter]) {
+                sortedArray[mainIndex] = left[leftCounter];
+                leftCounter++;
+                mainIndex++;
+            } else {
+                sortedArray[mainIndex] = right[rightCounter];
+                rightCounter++;
+                mainIndex++;
+            }
+        }
+
+        while (leftCounter < left.length) {
+            sortedArray[mainIndex] = left[leftCounter];
+            leftCounter++;
+            mainIndex++;
+        }
+
+        while (rightCounter < right.length) {
+            sortedArray[mainIndex] = right[rightCounter];
+            rightCounter++;
+            mainIndex++;
+        }
 
         return sortedArray;
     }
 
-
-    static int[] binaryMergeSort(int[] array){
-        if(array.length==0 || array.length<1 )
+    static int[] binaryMergeSort(int[] array) {
+        if (array.length <=1)
             return array;
 
+        int half = array.length / 2;
+        int[] left = binaryMergeSort(Arrays.copyOfRange(array, 0, half));
+        int[] right = binaryMergeSort(Arrays.copyOfRange(array, half, array.length));
 
-        int half=array.length/2;
-        int[] left= binaryMergeSort(Arrays.copyOfRange(array, 0, half))  ;
-        int[] right=binaryMergeSort(Arrays.copyOfRange(array, half, array.length));
-
-
-        return mergeSort(left,right);
+        return mergeSort(left, right);
 
     }
-
-
-    
 
 }

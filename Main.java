@@ -12,17 +12,19 @@ class Main {
 
         }
 
-        System.out.println("Sum:"+ ArrayUtils.sumArray(array));
+        // System.out.println("Sum:"+ ArrayUtils.sumArray(array));
 
-        System.out.println("Max:"+ArrayUtils.maxArray(array));
+        // System.out.println("Max:"+ArrayUtils.maxArray(array));
 
-        System.out.println("Min:"+ArrayUtils.minArray(array));
+        // System.out.println("Min:"+ArrayUtils.minArray(array));
 
-        System.out.println("Sorted Array:");
-        ArrayUtils.bubbleSort(array);
-        ArrayUtils.printArray(array);
+        // System.out.println("Sorted Array:");
+        // ArrayUtils.bubbleSort(array);
+        // ArrayUtils.printArray(array);
  
+        int[] sortedArray=ArrayUtils.binaryMergeSort(array);
 
+        ArrayUtils.printArray(sortedArray);
 
         
 
